@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="quizPane" prefHeight="600" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quiz_game.controllers.QuizController">
+   <AnchorPane prefHeight="61.0" prefWidth="600.0">
+      <children>
+      
+          <Label fx:id="label" visible="false" layoutX="14.0" layoutY="7.0" prefHeight="17.0" prefWidth="454.0" text="Choose the correct answer. Only one answer is correct.">
+            <font>
+               <Font size="17.0" />
+            </font></Label>
+          <Button fx:id="startQuizButton" layoutX="260.0" layoutY="31.0" onAction="#onStartQuizButtonClick" text="Start quiz">
+            <font>
+               <Font size="15.0" />
+            </font></Button>
+          <Button layoutX="507.0" layoutY="7.0" onAction="#onCloseAppClick" text="Close App" />
+      </children>
+   </AnchorPane>
+   <AnchorPane prefHeight="22.0" prefWidth="600.0">
+      <children>
+          <Label fx:id="time" layoutX="166.0" layoutY="4.0" textFill="#ff0101">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label fx:id="timeInfo2" layoutX="213.0" visible="false" layoutY="4.0" text="sec" textFill="#f56363">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label fx:id="timeInfo1" layoutX="14.0" layoutY="4.0" visible="false" text="Remaining time:" textFill="#f56363">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+   <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <children>
+          <Label fx:id="questionText" layoutX="14.0" layoutY="14.0" visible="false">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+          <RadioButton fx:id="a1" layoutX="14.0" layoutY="44.0" onAction="#onRadioButtonClicked" visible="false">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </RadioButton>
+          <RadioButton fx:id="a2" layoutX="14.0" layoutY="74.0" onAction="#onRadioButtonClicked" visible="false">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </RadioButton>
+          <RadioButton fx:id="a3" layoutX="14.0" layoutY="104.0" onAction="#onRadioButtonClicked" visible="false">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </RadioButton>
+          <RadioButton fx:id="a4" layoutX="14.0" layoutY="134.0" onAction="#onRadioButtonClicked" visible="false">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </RadioButton>
+          <Button fx:id="next" layoutX="15.0" layoutY="173.0" onAction="#onNextButtonClick" text="Next" visible="false">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Button>
+      </children>
+   </AnchorPane>
+</VBox>
