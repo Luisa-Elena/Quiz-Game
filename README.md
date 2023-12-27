@@ -54,5 +54,7 @@ Right-click on the main class file and select Run <YourMainClass>.
 ## Documentation
 #### _Class diagram:_
 
+- In a folder .properties there should be 3 String variables: DBNAME, DBUSER and DBPASSWORD used to connect to the postgres database
+
 #### _Database project:_
 ![Quiz_Game_DB](https://github.com/Luisa-Elena/Quiz-Game/assets/143015197/60081911-7f88-4fc0-93e6-70b9d916e932)
