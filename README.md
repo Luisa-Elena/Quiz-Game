@@ -56,6 +56,7 @@ Right-click on the main class file and select Run <YourMainClass>.
  
 ## Documentation
 #### _Class diagram:_
+![Quiz-Game drawio](https://github.com/Luisa-Elena/Quiz-Game/assets/143015197/5c3d7643-19fd-4a3c-a529-1e363c84a771)
 
 #### _Database project:_
 ![Quiz_Game_DB](https://github.com/Luisa-Elena/Quiz-Game/assets/143015197/60081911-7f88-4fc0-93e6-70b9d916e932)
