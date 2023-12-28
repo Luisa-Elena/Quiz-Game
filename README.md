@@ -14,8 +14,8 @@
 - It is a JavaFX application where users can take quizzes from different categories. 
 - All quizzes are stored in a PostgreSQL database.
 - A user has a name, password and a role assigned.
-- If a user is not an admin, then he could choose and solve quizzes. Each quiz has only one correct answer out of 4 possible options, and each correct answer values 1 point, meaning the maximum score is equal with the number of questions for that particular quiz. If the user has solved the quiz for the first time, its score will be inserted in the database and if the user solves the quiz again, his score for that quiz will be updated. Also, each question has a duration in seconds. For each question, a countdown timer will start, showing the remaining time in which the user is allowed to check an answer.
-- If one has the role of an admin, he could view the scores of all other users for each quiz they took.
+- If a user is not an admin, then he can choose and solve quizzes. Each quiz has only one correct answer out of 4 possible options, and each correct answer values 1 point, meaning the maximum score is equal with the number of questions for that particular quiz. If the user has solved the quiz for the first time, its score will be inserted in the database and if the user solves the quiz again, his score for that quiz will be updated. Also, each question has a duration in seconds. For each question, a countdown timer will start, showing the remaining time in which the user is allowed to check an answer.
+- If one has the role of an admin, he can view the scores of all other users for each quiz they took.
 
 ## Installation
 
