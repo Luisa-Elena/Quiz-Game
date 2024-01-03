@@ -25,10 +25,11 @@ public class DBFunctions {
         return conn;
     }
 
-    public void insertNewUser(Connection conn, String tableName, String name, String password, String role) {
+    public void insertNewUser(String name, String password, String role) {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
         Statement statement;
         try {
-            String query = String.format("insert into %s(name,password,role) values('%s','%s','%s')", tableName, name, password, role);
+            String query = String.format("insert into users(name,password,role) values('%s','%s','%s')", name, password, role);
             statement = conn.createStatement();
             statement.executeUpdate(query);
             System.out.println("New user inserted");
@@ -37,11 +38,12 @@ public class DBFunctions {
         }
     }
 
-    public boolean fetchUser(Connection conn, String tableNAme, String name, String password) {
+    public boolean fetchUser(String name, String password) {
+        Connection conn = connectToDB(Environment.DBNAME, Environment.DBUSER, Environment.DBPASSWORD);
         Statement statement;
         boolean ok = false;
         try{
-            String query = String.format("select * from %s where name='%s' and password='%s'",tableNAme,name,password);
+            String query = String.format("select * from users where name='%s' and password='%s'",name,password);
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while(resultSet.next()) {
@@ -57,7 +59,8 @@ public class DBFunctions {
         return ok;
     }
 
-    public List<String> getQuizCategories(Connection conn) {
+    public List<String> getQuizCategories() {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
         Statement statement;
         ResultSet resultSet;
         List<String> categories = new ArrayList<>();
@@ -76,7 +79,8 @@ public class DBFunctions {
         return categories;
     }
 
-    public List<String> getQuizzes(Connection conn) {
+    public List<String> getQuizzes() {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
         Statement statement;
         ResultSet resultSet;
         List<String> quizzes = new ArrayList<>();
@@ -97,7 +101,8 @@ public class DBFunctions {
         return quizzes;
     }
 
-    public ResultSet getQuestions (Connection conn) {
+    public ResultSet getQuestions () {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
         Statement statement;
         ResultSet resultSet = null;
 
@@ -115,7 +120,8 @@ public class DBFunctions {
         return resultSet;
     }
 
-    public void setQuizId (Connection conn, String quizName) {
+    public void setQuizId (String quizName) {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
         Statement statement;
         try{
             String query = String.format("select id from quizzes q \n" +
@@ -130,7 +136,8 @@ public class DBFunctions {
         }
     }
 
-    public boolean searchScore(Connection conn, int userId, int quizId) {
+    public boolean searchScore(int userId, int quizId) {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
         boolean ok = true;
         Statement statement;
         try{
@@ -148,7 +155,8 @@ public class DBFunctions {
         return ok;
     }
 
-    public void insertScore (Connection conn, int userId, int quizId, int points) {
+    public void insertScore (int userId, int quizId, int points) {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
         Statement statement;
         try {
             String query = String.format("insert into score (user_id, quiz_id, score)\n" +
@@ -161,7 +169,8 @@ public class DBFunctions {
         }
     }
 
-    public void updateScore(Connection conn, int userId, int quizId, int points) {
+    public void updateScore(int userId, int quizId, int points) {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
         Statement statement;
         try {
             String query = String.format("update score\n" +
@@ -174,5 +183,17 @@ public class DBFunctions {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public ResultSet getTableViewData () {
+        ResultSet resultSet = null;
+        Connection connection = connectToDB(Environment.DBNAME, Environment.DBUSER, Environment.DBPASSWORD);
+        try {
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM user_quiz_scores_view");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return resultSet;
     }
 }

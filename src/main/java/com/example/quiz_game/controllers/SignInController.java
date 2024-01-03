@@ -1,15 +1,12 @@
 package com.example.quiz_game.controllers;
 
 import com.example.quiz_game.enums.SCENE_IDENTIFIER;
-import com.example.quiz_game.utils.ApplicationHandler;
 import com.example.quiz_game.utils.DBFunctions;
-import com.example.quiz_game.utils.Environment;
 import com.example.quiz_game.utils.UserData;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import java.sql.Connection;
 import java.util.Objects;
 
 public class SignInController extends SceneController{
@@ -51,8 +48,6 @@ public class SignInController extends SceneController{
 
     private boolean validateSignIn(String username, String password) {
         DBFunctions db = new DBFunctions();
-        Connection conn = db.connectToDB(Environment.DBNAME, Environment.DBUSER, Environment.DBPASSWORD);
-
-        return db.fetchUser(conn, "users", nameField.getText(), passwordField.getText());
+        return db.fetchUser(nameField.getText(), passwordField.getText());
     }
 }

@@ -1,7 +1,6 @@
 package com.example.quiz_game.controllers;
 
 import com.example.quiz_game.utils.DBFunctions;
-import com.example.quiz_game.utils.Environment;
 import com.example.quiz_game.utils.UserQuizScore;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,9 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class AdminAfterSignin extends SceneController{
 
@@ -41,12 +38,8 @@ public class AdminAfterSignin extends SceneController{
         tableView.getColumns().addAll(userNameColumn, quizNameColumn, userScoreColumn);
 
         DBFunctions db = new DBFunctions();
-        Connection connection = db.connectToDB(Environment.DBNAME, Environment.DBUSER, Environment.DBPASSWORD);
-
+        ResultSet resultSet = db.getTableViewData();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM user_quiz_scores_view");
-
             while (resultSet.next()) {
                 String userName = resultSet.getString("user_name");
                 String quizName = resultSet.getString("quiz_name");
@@ -54,8 +47,6 @@ public class AdminAfterSignin extends SceneController{
 
                 tableView.getItems().add(new UserQuizScore(userName, quizName, userScore));
             }
-
-            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

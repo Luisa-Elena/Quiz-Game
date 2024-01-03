@@ -1,14 +1,12 @@
 package com.example.quiz_game.controllers;
 
 import com.example.quiz_game.utils.DBFunctions;
-import com.example.quiz_game.utils.Environment;
 import com.example.quiz_game.utils.QuizData;
 import com.example.quiz_game.utils.UserData;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -55,7 +53,6 @@ public class QuizController extends SceneController{
     private Label label;
 
     private DBFunctions db = new DBFunctions();
-    private Connection conn = db.connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
 
     public void onStartQuizButtonClick() {
         timeInfo1.setVisible(true);
@@ -76,7 +73,7 @@ public class QuizController extends SceneController{
         a3.setToggleGroup(toggleGroup);
         a4.setToggleGroup(toggleGroup);
 
-        resultSet = db.getQuestions(conn);
+        resultSet = db.getQuestions();
 
         getNextQuestion(resultSet);
     }
@@ -110,14 +107,14 @@ public class QuizController extends SceneController{
 
                 label.setText("Your score: " + points + " points out of " + maxPoints);
 
-                boolean isToInsert = db.searchScore(conn, UserData.getInstance().getId(), QuizData.getInstance().getQuizId());
+                boolean isToInsert = db.searchScore(UserData.getInstance().getId(), QuizData.getInstance().getQuizId());
                 if(isToInsert) { //insert new score for this quiz and user
                     //System.out.println("insert");
-                    db.insertScore(conn, UserData.getInstance().getId(), QuizData.getInstance().getQuizId(), points);
+                    db.insertScore(UserData.getInstance().getId(), QuizData.getInstance().getQuizId(), points);
 
                 } else { //update score for this quiz and user
                     //System.out.println("update");
-                    db.updateScore(conn, UserData.getInstance().getId(), QuizData.getInstance().getQuizId(), points);
+                    db.updateScore(UserData.getInstance().getId(), QuizData.getInstance().getQuizId(), points);
                 }
 
                 time.setVisible(false);
