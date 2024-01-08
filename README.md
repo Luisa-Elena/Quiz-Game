@@ -15,7 +15,7 @@
 - All quizzes are stored in a PostgreSQL database.
 - A user has a name, password and a role assigned.
 - If a user is not an admin, then he can choose and solve quizzes. Each quiz has only one correct answer out of 4 possible options, and each correct answer values 1 point, meaning the maximum score is equal with the number of questions for that particular quiz. If the user has solved the quiz for the first time, its score will be inserted in the database and if the user solves the quiz again, his score for that quiz will be updated. Also, each question has a duration in seconds. For each question, a countdown timer will start, showing the remaining time in which the user is allowed to check an answer.
-- If one has the role of an admin, he can view the scores of all other users for each quiz they took.
+- If one has the role of an admin, he can view the scores of all other users for each quiz they took and also, he can delete accounts of other users.
 
 ## Installation
 
@@ -51,7 +51,7 @@ Right-click on the main class file and select Run <YourMainClass>.
 ## Usage
 - Once the application has started, you could create an account using the SignUp button, or you could use your credentials in order to SignIn.
 - Depending on the role you have (admin, or user) you will be directed to pages accordingly.
-- If you are an admin, you could see a table view with all users and their latest scores for all the quizzes they solved.
+- If you are an admin, you could see a table view with all users and their latest scores for all the quizzes they solved or you could delete users (their accounts).
 - If you don't have the admin role, you will have to select the category of the quiz you want to take. Then, you can see the available quizzes for the category you chose and you can choose one of them. After choosing a quiz, you have to click the Start button for that particular quiz in order to begin and see the questions.
  
 ## Documentation
