@@ -41,7 +41,12 @@ public class SignUpController extends SceneController implements Initializable {
     protected void onSubmitButtonClick() {
         DBFunctions db = new DBFunctions();
         if(nameField.getText()!="" && passwordField.getText()!="" && roleField.getValue()!=null) {
-            db.insertNewUser(nameField.getText(), passwordField.getText(), roleField.getValue());
+            if(!db.fetchUser(nameField.getText(), passwordField.getText())) {
+                db.insertNewUser(nameField.getText(), passwordField.getText(), roleField.getValue());
+            }
+            else {
+                signUpInfo.setText("This user already exists. - Please change both the name and the password");
+            }
         } else {
             signUpInfo.setText("All fields are required! - Please make sure you enter all data");
         }

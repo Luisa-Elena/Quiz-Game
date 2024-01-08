@@ -34,7 +34,7 @@ public class ApplicationHandler {
 
         this.stage = stage;
         this.stage.setTitle("Quiz Game");
-        this.stage.setScene(new Scene(this.views.get(SCENE_IDENTIFIER.WELCOME), 600, 600));
+        this.stage.setScene(new Scene(this.views.get(SCENE_IDENTIFIER.WELCOME), 1000, 600));
         this.stage.show();
     }
 

@@ -1,9 +1,6 @@
 package com.example.quiz_game.utils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -195,5 +192,44 @@ public class DBFunctions {
             System.out.println(e);
         }
         return resultSet;
+    }
+
+    public List<String> getAllUsers() {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
+        Statement statement;
+        ResultSet resultSet;
+        List<String> users = new ArrayList<>();
+        try {
+            String query = String.format("select name from users");
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(query);
+
+            while(resultSet.next()) {
+                users.add(resultSet.getString("name"));
+            }
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+
+        return users;
+    }
+
+    public void deleteUser(String userName) {
+        Connection conn = connectToDB(Environment.DBNAME,Environment.DBUSER, Environment.DBPASSWORD);
+        Statement statement1;
+        Statement statement2;
+        try {
+            String query1 = String.format("DELETE FROM score WHERE user_id IN (SELECT id FROM users WHERE name = '%s')", userName);
+            statement1 = conn.createStatement();
+            statement1.executeUpdate(query1);
+
+            String query2 = String.format("DELETE FROM users WHERE name = '%s'", userName);
+            statement2 = conn.createStatement();
+            statement2.executeUpdate(query2);
+
+            System.out.println("Successfully deleted");
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
 }

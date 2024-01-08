@@ -165,7 +165,7 @@ public class QuizController extends SceneController{
             if (currentQuestionDuration <= 0) {
                 // Update UI components
                 Platform.runLater(() -> {
-                   onNextButtonClick();
+                    onNextButtonClick();
                 });
             }
         }

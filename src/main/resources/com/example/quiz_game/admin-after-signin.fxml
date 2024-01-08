@@ -5,13 +5,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quiz_game.controllers.AdminAfterSignin">
-   <children>
-      <Label layoutX="14.0" layoutY="14.0" text="You are connected as an admin">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <Button fx:id="viewScoresButton" layoutX="26.0" layoutY="44.0" mnemonicParsing="false" onAction="#onViewScoresClick" text="View Scores" />
-      <Button layoutX="508.0" layoutY="19.0" onAction="#onCloseAppClick" text="Close App" />
-   </children>
-</AnchorPane>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.quiz_game.controllers.AdminAfterSignin"
+      prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #c1d3fe;">
+
+   <AnchorPane>
+      <children>
+         <Label layoutX="14.0" layoutY="14.0" text="You are connected as an admin">
+            <font>
+               <Font size="20.0"/>
+            </font>
+         </Label>
+         <Button fx:id="viewScoresButton" layoutX="26.0" layoutY="44.0" mnemonicParsing="false" onAction="#onViewScoresClick" style="-fx-background-color: #FFFFFF;" text="View Scores">
+            <font>
+               <Font size="17.0"/>
+            </font>
+         </Button>
+         <Button layoutX="881.0" layoutY="17.0" onAction="#onCloseAppClick" style="-fx-background-color: #FFFFFF;" text="Close App" textFill="#f70a0a">
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Button>
+         <Button fx:id="viewUsersButton" onAction="#onViewUsersClick" layoutX="153.0" layoutY="44.0" mnemonicParsing="false" text="View users" style="-fx-background-color: #FFFFFF;">
+            <font>
+               <Font size="17.0"/>
+            </font>
+         </Button>
+      </children>
+   </AnchorPane>
+
+   <AnchorPane fx:id="anchorPane">
+
+   </AnchorPane>
+</VBox>
