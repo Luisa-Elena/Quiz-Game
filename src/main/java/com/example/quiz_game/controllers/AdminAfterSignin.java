@@ -102,7 +102,9 @@ public class AdminAfterSignin extends SceneController{
             label.setStyle("-fx-font-size: 17px;");
 
             Button userButton = new Button("Delete");
+            userButton.setStyle("-fx-background-color: #FFFFFF;");
             userButton.setOnAction(e -> handleUserButtonClick(user));
+            HBox.setMargin(userButton, new Insets(0, 0, 0, 10));
 
             userBox.getChildren().addAll(label, userButton);
             VBox.setMargin(userBox, new Insets(2, 5, 2, 20));
