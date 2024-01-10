@@ -200,12 +200,15 @@ public class DBFunctions {
         ResultSet resultSet;
         List<String> users = new ArrayList<>();
         try {
-            String query = String.format("select name from users");
+            String query = String.format("select * from users");
             statement = conn.createStatement();
             resultSet = statement.executeQuery(query);
 
             while(resultSet.next()) {
-                users.add(resultSet.getString("name"));
+                String role = resultSet.getString("role");
+                if(role.equals("user")) { //only display users such that admins cannot be deleted
+                    users.add(resultSet.getString("name"));
+                }
             }
         } catch(Exception e) {
             System.out.println(e);
