@@ -116,6 +116,7 @@ SCENE_IDENTIFIER
 -- onNextButtonClick(): Handles the action when the next button is clicked, checks if the selected answer is the correct one, proceeds to the next question and resets the timer.
 -- DecrementTask: Inner class representing a TimerTask for decrementing the countdown timer during each question. When the time is up for a question, the method onNextButtonClick() is called, to get to the next question.
 
+
 #### _Class diagram:_
 ![Quiz-Game drawio](https://github.com/Luisa-Elena/Quiz-Game/assets/143015197/5c3d7643-19fd-4a3c-a529-1e363c84a771)
 
