@@ -72,16 +72,16 @@ SCENE_IDENTIFIER
 ##### OuizCategory, QuizData and UserData
 -- This classes follow the singleton pattern, ensuring that only one instance of the class exists throughout the application. They are used to pass data between scenes.
 ##### UserQuizScore
-- This class is used in the TableView with the scores.
-- The TableView will be used to display data of type UserQuizScore in tabular format.
-- The fields are username, quizname and the corresponding score.
+-- This class is used in the TableView with the scores.
+-- The TableView will be used to display data of type UserQuizScore in tabular format.
+-- The fields are username, quizname and the corresponding score.
 
 #### controllers
 ##### SceneController
--- All controllers inherit this class and its mehods: changeScene() and closeApplication().
+-- All controllers inherit this class and its methods: changeScene() and closeApplication().
 ##### HelloController
 -- This is the controller for welcome-page.fxml.
--- It changes the scenes when the log in or sign up buttons were clicked.
+-- It changes the scenes when the Log In or Sign Up buttons were clicked.
 ##### SignUpController
 -- This is the controller for signup-page.fxml.
 -- It initializes the roles array with 'admin' and 'user' for the ChoiceBox.
