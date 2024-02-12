@@ -55,6 +55,67 @@ Right-click on the main class file and select Run <YourMainClass>.
 - If you don't have the admin role, you will have to select the category of the quiz you want to take. Then, you can see the available quizzes for the category you chose and you can choose one of them. After choosing a quiz, you have to click the Start button for that particular quiz in order to begin and see the questions.
  
 ## Documentation
+##### HelloApplication Class
+-- This class overrides the strat method and calls the launch() function inside main
+#### enums
+SCENE_IDENTIFIER
+-- This enum is used to provide identifiers for the scenes used in the application.  Each enum constant represents a specific scene along with its corresponding FXML file name as label.
+#### utils
+##### ApplicationHandler
+-- This class provides methods for initializing views, starting the application, closing the application, and changing scenes.
+-- views is a map containing pairs for each scene with its identifier and the corresponding Pane
+-- The getInstance() method provides a singleton instance of the ApplicationHandler class.
+##### DBFunctions
+-- This class contains methods for working with the database.
+##### Environment
+-- This class reads and loads in a Properties object field, environment-specific properties related to the database connection (database name, username, and password) from a .properties file located in the application directory.
+##### OuizCategory, QuizData and UserData
+-- This classes follow the singleton pattern, ensuring that only one instance of the class exists throughout the application. They are used to pass data between scenes.
+##### UserQuizScore
+- This class is used in the TableView with the scores.
+- The TableView will be used to display data of type UserQuizScore in tabular format.
+- The fields are username, quizname and the corresponding score.
+
+#### controllers
+##### SceneController
+-- All controllers inherit this class and its mehods: changeScene() and closeApplication().
+##### HelloController
+-- This is the controller for welcome-page.fxml.
+-- It changes the scenes when the log in or sign up buttons were clicked.
+##### SignUpController
+-- This is the controller for signup-page.fxml.
+-- It initializes the roles array with 'admin' and 'user' for the ChoiceBox.
+-- When the submit button is clicked, if all the necessary data was completed for a new account, and if the user doesn't exist already, then the new user will be inserted in the database.
+##### SignInController
+-- This is the controller for signin-page.fxml.
+-- If the user if found in the database after clicking the signin button, the user will be directed to the next scene based on its role (admin or user).
+##### AdminAfterSignin
+-- This is the controller for admin-after-signin.fxml.
+-- anchorPane: AnchorPane container for displaying content.
+-- labelContainer: VBox container for displaying user labels and delete buttons.
+-- tableView: TableView for displaying user quiz scores.
+-- onViewScoresClick(): Handles the action when the view scores button is clicked, retrieves user quiz scores from the database and displays them in the tableView.
+-- onViewUsersClick(): Handles the action when the view users button is clicked, retrieves all users from the database and displays them in the labelContainer.
+-- handleUserButtonClick(String userName): Handles the action when the delete button next to a user's label is clicked, deletes the corresponding user from the database.
+##### UserAfterSignin
+-- This is the controller for user-after-signin.fxml.
+-- onGetCategoriesClick(): Handles the action when the get categories button is clicked, retrieves quiz categories from the database and displays them as buttons in the vbox.
+-- handleCategoryButtonClick(String category): Handles the action when a quiz category button is clicked, sets the selected category using the QuizCategory singleton instance, and navigates the user to the quizzes view.
+##### QuizzesViewController
+-- This is the controller for quizzes-view.fxml.
+-- onGetQuizzesClick(): Handles the action when the get quizzes button is clicked, retrieves quizzes from the database and displays them as buttons in the vbox.
+-- handleQuizButtonClick(String quizName): Handles the action when a quiz button is clicked, sets the selected quiz name using the QuizData singleton instance, retrieves the quiz ID from the database, sets it in the QuizData instance, and navigates the user to the quiz view.
+##### QuizController
+-- This is the controller for quiz.fxml.
+-- a1, a2, a3, a4: RadioButtons for displaying answer options.
+-- toggleGroup: ToggleGroup for managing RadioButton selection.
+-- resultSet: ResultSet containing quiz questions retrieved from the database.
+-- timer: Timer for managing the countdown timer during each question.
+-- onRadioButtonClicked(): Handles the action when a RadioButton representing an answer option is clicked and sets the selected answer.
+-- getNextQuestion(ResultSet resultSet): Retrieves the next question from the database and updates the UI. When there are no more questions, meaning that the quiz attempt is over, the score is inserted or updated in the database and the result is displayed.
+-- onNextButtonClick(): Handles the action when the next button is clicked, checks if the selected answer is the correct one, proceeds to the next question and resets the timer.
+-- DecrementTask: Inner class representing a TimerTask for decrementing the countdown timer during each question. When the time is up for a question, the method onNextButtonClick() is called, to get to the next question.
+
 #### _Class diagram:_
 ![Quiz-Game drawio](https://github.com/Luisa-Elena/Quiz-Game/assets/143015197/5c3d7643-19fd-4a3c-a529-1e363c84a771)
 
